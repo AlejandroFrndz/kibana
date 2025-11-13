@@ -135,7 +135,7 @@ const wiredStreamDefinition = {
 const expectedStreamsResponse: Streams.ClassicStream.Definition = {
   name: TEST_STREAM_NAME,
   description: '',
-  updated_at: new Date().toISOString(),
+  updated_at: new Date(0).toISOString(),
   ingest: {
     lifecycle: {
       ilm: {
@@ -154,7 +154,7 @@ const expectedStreamsResponse: Streams.ClassicStream.Definition = {
 const expectedWiredStreamsResponse: Streams.WiredStream.Definition = {
   name: WIRED_STREAM_NAME,
   description: '',
-  updated_at: new Date().toISOString(),
+  updated_at: new Date(0).toISOString(),
   ingest: {
     lifecycle: {
       ilm: {
