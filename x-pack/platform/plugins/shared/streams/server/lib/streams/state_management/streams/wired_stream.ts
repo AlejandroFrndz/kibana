@@ -168,6 +168,7 @@ export class WiredStream extends StreamActiveRecord<Streams.WiredStream.Definiti
         definition: {
           name: parentId,
           description: '',
+          updated_at: new Date().toISOString(),
           ingest: {
             lifecycle: { inherit: {} },
             processing: { steps: [] },
@@ -200,6 +201,7 @@ export class WiredStream extends StreamActiveRecord<Streams.WiredStream.Definiti
             definition: {
               name: routeTarget,
               description: '',
+              updated_at: new Date().toISOString(),
               ingest: {
                 lifecycle: { inherit: {} },
                 processing: { steps: [] },
@@ -231,6 +233,7 @@ export class WiredStream extends StreamActiveRecord<Streams.WiredStream.Definiti
             definition: {
               name: parentId,
               description: '',
+              updated_at: new Date().toISOString(),
               ingest: {
                 ...parentStream.definition.ingest,
                 wired: {
@@ -280,6 +283,7 @@ export class WiredStream extends StreamActiveRecord<Streams.WiredStream.Definiti
             definition: {
               name: parentId,
               description: '',
+              updated_at: new Date().toISOString(),
               ingest: {
                 ...parentStream.definition.ingest,
                 wired: {
