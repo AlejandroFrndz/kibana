@@ -55534,6 +55534,8 @@ paths:
                                   properties:
                                     name:
                                       not: {}
+                                    updated_at:
+                                      not: {}
                                 - additionalProperties: false
                                   type: object
                                   properties:
@@ -55541,9 +55543,13 @@ paths:
                                       type: string
                                     name:
                                       type: string
+                                    updated_at:
+                                      format: date-time
+                                      type: string
                                   required:
                                     - name
                                     - description
+                                    - updated_at
                           required:
                             - stream
                         - type: object
@@ -55736,6 +55742,8 @@ paths:
                                   properties:
                                     name:
                                       not: {}
+                                    updated_at:
+                                      not: {}
                                 - allOf:
                                     - type: object
                                       properties: {}
@@ -55745,9 +55753,13 @@ paths:
                                           type: string
                                         name:
                                           type: string
+                                        updated_at:
+                                          format: date-time
+                                          type: string
                                       required:
                                         - name
                                         - description
+                                        - updated_at
                                     - type: object
                                       properties:
                                         ingest:
@@ -58129,6 +58141,8 @@ paths:
                                   properties:
                                     name:
                                       not: {}
+                                    updated_at:
+                                      not: {}
                                 - additionalProperties: false
                                   type: object
                                   properties:
@@ -58136,9 +58150,13 @@ paths:
                                       type: string
                                     name:
                                       type: string
+                                    updated_at:
+                                      format: date-time
+                                      type: string
                                   required:
                                     - name
                                     - description
+                                    - updated_at
                           required:
                             - stream
                         - type: object
@@ -58330,6 +58348,8 @@ paths:
                                   type: object
                                   properties:
                                     name:
+                                      not: {}
+                                    updated_at:
                                       not: {}
                                 - additionalProperties: false
                                   type: object
@@ -60498,6 +60518,8 @@ paths:
                                   properties:
                                     name:
                                       not: {}
+                                    updated_at:
+                                      not: {}
                                 - additionalProperties: false
                                   type: object
                                   properties:
@@ -60505,9 +60527,13 @@ paths:
                                       type: string
                                     name:
                                       type: string
+                                    updated_at:
+                                      format: date-time
+                                      type: string
                                   required:
                                     - name
                                     - description
+                                    - updated_at
                           required:
                             - stream
                         - type: object
@@ -60700,6 +60726,8 @@ paths:
                                   properties:
                                     name:
                                       not: {}
+                                    updated_at:
+                                      not: {}
                                 - allOf:
                                     - type: object
                                       properties: {}
@@ -60709,9 +60737,13 @@ paths:
                                           type: string
                                         name:
                                           type: string
+                                        updated_at:
+                                          format: date-time
+                                          type: string
                                       required:
                                         - name
                                         - description
+                                        - updated_at
                                     - type: object
                                       properties:
                                         ingest:
@@ -62943,6 +62975,8 @@ paths:
                                   properties:
                                     name:
                                       not: {}
+                                    updated_at:
+                                      not: {}
                                 - additionalProperties: false
                                   type: object
                                   properties:
@@ -62950,9 +62984,13 @@ paths:
                                       type: string
                                     name:
                                       type: string
+                                    updated_at:
+                                      format: date-time
+                                      type: string
                                   required:
                                     - name
                                     - description
+                                    - updated_at
                           required:
                             - stream
                         - type: object
@@ -63144,6 +63182,8 @@ paths:
                                   type: object
                                   properties:
                                     name:
+                                      not: {}
+                                    updated_at:
                                       not: {}
                                 - additionalProperties: false
                                   type: object
@@ -65312,6 +65352,8 @@ paths:
                               properties:
                                 name:
                                   not: {}
+                                updated_at:
+                                  not: {}
                             - additionalProperties: false
                               type: object
                               properties:
@@ -65319,9 +65361,13 @@ paths:
                                   type: string
                                 name:
                                   type: string
+                                updated_at:
+                                  format: date-time
+                                  type: string
                               required:
                                 - name
                                 - description
+                                - updated_at
                       required:
                         - stream
                     - type: object
@@ -65513,6 +65559,8 @@ paths:
                               type: object
                               properties:
                                 name:
+                                  not: {}
+                                updated_at:
                                   not: {}
                             - additionalProperties: false
                               type: object
