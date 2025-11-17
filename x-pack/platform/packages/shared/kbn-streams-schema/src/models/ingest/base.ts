@@ -5,8 +5,6 @@
  * 2.0.
  */
 import { z } from '@kbn/zod';
-import type { StreamlangDSL } from '@kbn/streamlang';
-import { streamlangDSLSchema } from '@kbn/streamlang';
 import type { ModelValidation } from '../validation/model_validation';
 import { modelValidation } from '../validation/model_validation';
 import type { Validation } from '../validation/validation';
@@ -16,6 +14,8 @@ import { ingestStreamLifecycleSchema } from './lifecycle';
 import { BaseStream } from '../base';
 import type { IngestStreamSettings } from './settings';
 import { ingestStreamSettingsSchema } from './settings';
+import type { IngestStreamProcessing } from './processing';
+import { ingestStreamProcessingSchema } from './processing';
 
 interface IngestStreamPrivileges {
   // User can change everything about the stream
@@ -49,7 +49,7 @@ const ingestStreamPrivilegesSchema: z.Schema<IngestStreamPrivileges> = z.object(
 
 export interface IngestBase {
   lifecycle: IngestStreamLifecycle;
-  processing: StreamlangDSL;
+  processing: IngestStreamProcessing;
   settings: IngestStreamSettings;
 }
 
@@ -57,7 +57,7 @@ export const IngestBase: Validation<unknown, IngestBase> = validation(
   z.unknown(),
   z.object({
     lifecycle: ingestStreamLifecycleSchema,
-    processing: streamlangDSLSchema,
+    processing: ingestStreamProcessingSchema,
     settings: ingestStreamSettingsSchema,
   })
 );
@@ -80,7 +80,13 @@ export namespace IngestBaseStream {
 
   export type UpsertRequest<
     TDefinition extends IngestBaseStream.Definition = IngestBaseStream.Definition
-  > = BaseStream.UpsertRequest<TDefinition>;
+  > = BaseStream.UpsertRequest<
+    Omit<TDefinition, 'ingest'> & {
+      ingest: Omit<IngestBase, 'processing'> & {
+        processing: Omit<IngestStreamProcessing, 'updated_at'>;
+      };
+    }
+  >;
 
   export interface Model {
     Definition: IngestBaseStream.Definition;
@@ -101,3 +107,24 @@ export const IngestBaseStream: ModelValidation<BaseStream.Model, IngestBaseStrea
     }),
     UpsertRequest: z.object({}),
   });
+
+const test: IngestBaseStream.UpsertRequest = {
+  dashboards: [],
+  rules: [],
+  queries: [],
+  stream: {
+    name: undefined,
+    description: 'desc',
+    updated_at: undefined,
+    ingest: {
+      lifecycle: {
+        inherit: {},
+      },
+      processing: {
+        steps: [],
+        updated_at: undefined,
+      },
+      settings: {},
+    },
+  },
+};
