@@ -32,6 +32,7 @@ export function createUpsertStreamActor({
   telemetryClient,
 }: Pick<StreamEnrichmentServiceDependencies, 'streamsRepositoryClient' | 'telemetryClient'>) {
   return fromPromise<UpsertStreamResponse, UpsertStreamInput>(async ({ input, signal }) => {
+    // TODO: @AlexFernandez Fix ingest upsert schema to remove the updated_at param in processing
     const response = await streamsRepositoryClient.fetch(
       `PUT /api/streams/{name}/_ingest 2023-10-31`,
       {
@@ -44,7 +45,10 @@ export function createUpsertStreamActor({
             ? {
                 ingest: {
                   ...input.definition.stream.ingest,
-                  processing: convertUIStepsToDSL(input.steps),
+                  processing: {
+                    ...convertUIStepsToDSL(input.steps),
+                    updated_at: new Date().toISOString(),
+                  },
                   ...(input.fields && {
                     wired: { ...input.definition.stream.ingest.wired, fields: input.fields },
                   }),
@@ -53,7 +57,10 @@ export function createUpsertStreamActor({
             : {
                 ingest: {
                   ...input.definition.stream.ingest,
-                  processing: convertUIStepsToDSL(input.steps),
+                  processing: {
+                    ...convertUIStepsToDSL(input.steps),
+                    updated_at: new Date().toISOString(),
+                  },
                   ...(input.fields && {
                     classic: {
                       ...input.definition.stream.ingest.classic,
