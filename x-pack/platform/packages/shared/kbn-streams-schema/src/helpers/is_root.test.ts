@@ -15,7 +15,7 @@ describe('isRootStreamDefinition', () => {
       updated_at: new Date().toISOString(),
       ingest: {
         lifecycle: { inherit: {} },
-        processing: { steps: [] },
+        processing: { steps: [], updated_at: new Date().toISOString() },
         settings: {},
         wired: { fields: {}, routing: [] },
       },
@@ -30,7 +30,7 @@ describe('isRootStreamDefinition', () => {
       updated_at: new Date().toISOString(),
       ingest: {
         lifecycle: { inherit: {} },
-        processing: { steps: [] },
+        processing: { steps: [], updated_at: new Date().toISOString() },
         settings: {},
         wired: { fields: {}, routing: [] },
       },
@@ -45,7 +45,7 @@ describe('isRootStreamDefinition', () => {
       updated_at: new Date().toISOString(),
       ingest: {
         lifecycle: { inherit: {} },
-        processing: { steps: [] },
+        processing: { steps: [], updated_at: new Date().toISOString() },
         settings: {},
         classic: {},
       },

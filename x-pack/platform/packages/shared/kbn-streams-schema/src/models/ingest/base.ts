@@ -79,8 +79,8 @@ export namespace IngestBaseStream {
   }
 
   export type UpsertRequest<
-    TDefinition extends IngestBaseStream.Definition = IngestBaseStream.Definition
-  > = BaseStream.UpsertRequest<OmitUpsertProps<TDefinition>>;
+    TDefinition extends OmitUpsertProps<IngestBaseStream.Definition> = OmitUpsertProps<IngestBaseStream.Definition>
+  > = BaseStream.UpsertRequest<TDefinition>;
 
   export interface Model {
     Definition: IngestBaseStream.Definition;
@@ -121,32 +121,11 @@ type WithDefaults = {
 type OmitUpsertProps<
   T extends {
     ingest: Omit<IngestBase, 'processing'> & {
-      processing: Omit<IngestStreamProcessing, 'updated_at'> & { updated_at: string };
+      processing: Omit<IngestStreamProcessing, 'updated_at'> & { updated_at?: string };
     };
   }
 > = Omit<T, 'ingest'> & {
   ingest: Omit<IngestBase, 'processing'> & {
     processing: Omit<IngestStreamProcessing, 'updated_at'> & { updated_at?: never };
   };
-};
-
-const test: IngestBaseStream.UpsertRequest = {
-  dashboards: [],
-  rules: [],
-  queries: [],
-  stream: {
-    name: undefined,
-    description: 'desc',
-    updated_at: undefined,
-    ingest: {
-      lifecycle: {
-        inherit: {},
-      },
-      processing: {
-        steps: [],
-        updated_at: undefined,
-      },
-      settings: {},
-    },
-  },
 };

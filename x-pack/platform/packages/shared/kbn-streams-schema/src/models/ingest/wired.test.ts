@@ -17,7 +17,7 @@ describe('WiredStream', () => {
         updated_at: new Date().toISOString(),
         ingest: {
           lifecycle: { inherit: {} },
-          processing: { steps: [] },
+          processing: { steps: [], updated_at: new Date().toISOString() },
           settings: {},
           wired: {
             fields: {},
@@ -99,7 +99,7 @@ describe('WiredStream', () => {
           updated_at: new Date().toISOString(),
           ingest: {
             lifecycle: { inherit: {} },
-            processing: { steps: [] },
+            processing: { steps: [], updated_at: new Date().toISOString() },
             settings: {},
             wired: {
               fields: {},
@@ -184,7 +184,7 @@ describe('WiredStream', () => {
         },
         ...emptyAssets,
       },
-    ])('is valid', (val) => {
+    ] satisfies WiredStream.UpsertRequest[])('is valid', (val) => {
       expect(WiredStream.UpsertRequest.is(val)).toBe(true);
       expect(WiredStream.UpsertRequest.right.parse(val)).toEqual(val);
     });
@@ -220,6 +220,27 @@ describe('WiredStream', () => {
               routing: [],
             },
           },
+        },
+        ...emptyAssets,
+      },
+      {
+        stream: {
+          description: 'ingest.processing.updated_at should not be present',
+          ingest: {
+            lifecycle: { inherit: {} },
+            processing: { steps: [], updated_at: new Date().toISOString() },
+            settings: {},
+            wired: {
+              fields: {},
+              routing: [],
+            },
+          },
+        },
+        ...emptyAssets,
+      },
+      {
+        stream: {
+          description: 'missing ingest',
         },
         ...emptyAssets,
       },
