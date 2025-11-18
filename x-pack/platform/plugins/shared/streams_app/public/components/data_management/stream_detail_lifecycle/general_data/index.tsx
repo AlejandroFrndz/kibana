@@ -13,6 +13,7 @@ import { isIlmLifecycle } from '@kbn/streams-schema';
 import type { PolicyFromES } from '@kbn/index-lifecycle-management-common-shared';
 import { i18n } from '@kbn/i18n';
 import { useAbortController } from '@kbn/react-hooks';
+import { omit } from 'lodash';
 import { useTimefilter } from '../../../../hooks/use_timefilter';
 import { getStreamTypeFromDefinition } from '../../../../util/get_stream_type_from_definition';
 import { useKibana } from '../../../../hooks/use_kibana';
@@ -63,6 +64,7 @@ export const StreamDetailGeneralData = ({
       const request = {
         ingest: {
           ...definition.stream.ingest,
+          processing: omit(definition.stream.ingest.processing, 'updated_at'),
           lifecycle,
         },
       };

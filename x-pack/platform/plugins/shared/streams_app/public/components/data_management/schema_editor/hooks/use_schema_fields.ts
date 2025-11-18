@@ -10,7 +10,7 @@ import { i18n } from '@kbn/i18n';
 import type { FieldDefinitionConfig } from '@kbn/streams-schema';
 import { Streams } from '@kbn/streams-schema';
 import { getAdvancedParameters } from '@kbn/streams-schema';
-import { isEqual } from 'lodash';
+import { isEqual, omit } from 'lodash';
 import { useMemo, useCallback, useState } from 'react';
 import { useAbortController, useAbortableAsync } from '@kbn/react-hooks';
 import { getStreamTypeFromDefinition } from '../../../../util/get_stream_type_from_definition';
@@ -177,6 +177,7 @@ export const useSchemaFields = ({
           body: {
             ingest: {
               ...definition.stream.ingest,
+              processing: omit(definition.stream.ingest.processing, 'updated_at'),
               ...(Streams.WiredStream.GetResponse.is(definition)
                 ? {
                     wired: {

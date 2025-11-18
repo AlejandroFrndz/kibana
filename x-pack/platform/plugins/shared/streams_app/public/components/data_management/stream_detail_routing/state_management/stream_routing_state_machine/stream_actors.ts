@@ -13,6 +13,7 @@ import type { APIReturnType } from '@kbn/streams-plugin/public/api';
 import type { IToasts } from '@kbn/core/public';
 import { i18n } from '@kbn/i18n';
 import type { Condition } from '@kbn/streamlang';
+import { omit } from 'lodash';
 import type { StreamsTelemetryClient } from '../../../../../telemetry/client';
 import { getFormattedError } from '../../../../../util/errors';
 import type { StreamRoutingServiceDependencies } from './types';
@@ -40,6 +41,7 @@ export function createUpsertStreamActor({
         body: {
           ingest: {
             ...input.definition.stream.ingest,
+            processing: omit(input.definition.stream.ingest.processing, 'updated_at'),
             wired: {
               ...input.definition.stream.ingest.wired,
               routing: input.routing,
