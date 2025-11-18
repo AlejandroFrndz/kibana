@@ -103,6 +103,13 @@ export class ClassicStream extends StreamActiveRecord<Streams.ClassicStream.Defi
         startingStateStreamDefinition.ingest.classic.field_overrides
       );
 
+    // The newly upserted definition will always have a new updated_at timestamp. But, if processing didn't change,
+    // we should keep the existing updated_at as processing wasn't touched.
+    if (startingStateStreamDefinition && !this._changes.processing) {
+      this._definition.ingest.processing.updated_at =
+        startingStateStreamDefinition.ingest.processing.updated_at;
+    }
+
     return { cascadingChanges: [], changeStatus: 'upserted' };
   }
 

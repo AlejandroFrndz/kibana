@@ -147,6 +147,7 @@ export const getStreamsApiService = ({
           ingest: {
             ...definition.stream.ingest,
             processing: {
+              updated_at: new Date().toISOString(),
               steps: [],
             },
           },
@@ -165,7 +166,10 @@ export const getStreamsApiService = ({
         await service.updateStream(streamName, {
           ingest: {
             ...definition.stream.ingest,
-            processing,
+            processing: {
+              ...processing,
+              updated_at: new Date().toISOString(),
+            },
           },
         });
       });

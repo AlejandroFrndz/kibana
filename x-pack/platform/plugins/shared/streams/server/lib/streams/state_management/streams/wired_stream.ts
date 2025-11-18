@@ -145,6 +145,13 @@ export class WiredStream extends StreamActiveRecord<Streams.WiredStream.Definiti
       !startingStateStreamDefinition ||
       !_.isEqual(this._definition.ingest.settings, startingStateStreamDefinition.ingest.settings);
 
+    // The newly upserted definition will always have a new updated_at timestamp. But, if processing didn't change,
+    // we should keep the existing updated_at as processing wasn't touched.
+    if (startingStateStreamDefinition && !this._changes.processing) {
+      this._definition.ingest.processing.updated_at =
+        startingStateStreamDefinition.ingest.processing.updated_at;
+    }
+
     const parentId = getParentId(this._definition.name);
     const cascadingChanges: StreamChange[] = [];
     if (parentId && !desiredState.has(parentId)) {
@@ -156,7 +163,7 @@ export class WiredStream extends StreamActiveRecord<Streams.WiredStream.Definiti
           updated_at: new Date().toISOString(),
           ingest: {
             lifecycle: { inherit: {} },
-            processing: { steps: [] },
+            processing: { steps: [], updated_at: new Date().toISOString() },
             settings: {},
             wired: {
               fields: {},
@@ -188,7 +195,7 @@ export class WiredStream extends StreamActiveRecord<Streams.WiredStream.Definiti
               updated_at: new Date().toISOString(),
               ingest: {
                 lifecycle: { inherit: {} },
-                processing: { steps: [] },
+                processing: { steps: [], updated_at: new Date().toISOString() },
                 settings: {},
                 wired: {
                   fields: {},
