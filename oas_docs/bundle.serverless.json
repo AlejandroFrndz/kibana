@@ -52284,6 +52284,24 @@
                                   {
                                     "additionalProperties": true,
                                     "properties": {
+                                      "ingest": {
+                                        "additionalProperties": true,
+                                        "properties": {
+                                          "processing": {
+                                            "additionalProperties": true,
+                                            "properties": {
+                                              "updated_at": {
+                                                "not": {}
+                                              }
+                                            },
+                                            "type": "object"
+                                          }
+                                        },
+                                        "required": [
+                                          "processing"
+                                        ],
+                                        "type": "object"
+                                      },
                                       "name": {
                                         "not": {}
                                       },
@@ -52685,6 +52703,24 @@
                                   {
                                     "additionalProperties": true,
                                     "properties": {
+                                      "ingest": {
+                                        "additionalProperties": true,
+                                        "properties": {
+                                          "processing": {
+                                            "additionalProperties": true,
+                                            "properties": {
+                                              "updated_at": {
+                                                "not": {}
+                                              }
+                                            },
+                                            "type": "object"
+                                          }
+                                        },
+                                        "required": [
+                                          "processing"
+                                        ],
+                                        "type": "object"
+                                      },
                                       "name": {
                                         "not": {}
                                       },
@@ -52695,35 +52731,11 @@
                                     "type": "object"
                                   },
                                   {
-                                    "allOf": [
-                                      {
-                                        "properties": {},
-                                        "type": "object"
-                                      },
-                                      {
-                                        "properties": {
-                                          "description": {
-                                            "type": "string"
-                                          },
-                                          "name": {
-                                            "type": "string"
-                                          },
-                                          "updated_at": {
-                                            "format": "date-time",
-                                            "type": "string"
-                                          }
-                                        },
-                                        "required": [
-                                          "name",
-                                          "description",
-                                          "updated_at"
-                                        ],
-                                        "type": "object"
-                                      },
-                                      {
-                                        "properties": {
-                                          "ingest": {
-                                            "additionalProperties": false,
+                                    "additionalProperties": false,
+                                    "properties": {
+                                      "ingest": {
+                                        "allOf": [
+                                          {
                                             "properties": {
                                               "failure_store": {
                                                 "anyOf": [
@@ -56805,10 +56817,15 @@
                                                       ]
                                                     },
                                                     "type": "array"
+                                                  },
+                                                  "updated_at": {
+                                                    "format": "date-time",
+                                                    "type": "string"
                                                   }
                                                 },
                                                 "required": [
-                                                  "steps"
+                                                  "steps",
+                                                  "updated_at"
                                                 ],
                                                 "type": "object"
                                               },
@@ -56872,17 +56889,8 @@
                                               "failure_store"
                                             ],
                                             "type": "object"
-                                          }
-                                        },
-                                        "required": [
-                                          "ingest"
-                                        ],
-                                        "type": "object"
-                                      },
-                                      {
-                                        "properties": {
-                                          "ingest": {
-                                            "additionalProperties": false,
+                                          },
+                                          {
                                             "properties": {
                                               "wired": {
                                                 "additionalProperties": false,
@@ -57310,13 +57318,13 @@
                                             ],
                                             "type": "object"
                                           }
-                                        },
-                                        "required": [
-                                          "ingest"
-                                        ],
-                                        "type": "object"
+                                        ]
                                       }
-                                    ]
+                                    },
+                                    "required": [
+                                      "ingest"
+                                    ],
+                                    "type": "object"
                                   }
                                 ]
                               }
@@ -57337,6 +57345,24 @@
                                   {
                                     "additionalProperties": true,
                                     "properties": {
+                                      "ingest": {
+                                        "additionalProperties": true,
+                                        "properties": {
+                                          "processing": {
+                                            "additionalProperties": true,
+                                            "properties": {
+                                              "updated_at": {
+                                                "not": {}
+                                              }
+                                            },
+                                            "type": "object"
+                                          }
+                                        },
+                                        "required": [
+                                          "processing"
+                                        ],
+                                        "type": "object"
+                                      },
                                       "name": {
                                         "not": {}
                                       },
@@ -57738,6 +57764,24 @@
                                   {
                                     "additionalProperties": true,
                                     "properties": {
+                                      "ingest": {
+                                        "additionalProperties": true,
+                                        "properties": {
+                                          "processing": {
+                                            "additionalProperties": true,
+                                            "properties": {
+                                              "updated_at": {
+                                                "not": {}
+                                              }
+                                            },
+                                            "type": "object"
+                                          }
+                                        },
+                                        "required": [
+                                          "processing"
+                                        ],
+                                        "type": "object"
+                                      },
                                       "name": {
                                         "not": {}
                                       },
@@ -61833,10 +61877,15 @@
                                                   ]
                                                 },
                                                 "type": "array"
+                                              },
+                                              "updated_at": {
+                                                "format": "date-time",
+                                                "type": "string"
                                               }
                                             },
                                             "required": [
-                                              "steps"
+                                              "steps",
+                                              "updated_at"
                                             ],
                                             "type": "object"
                                           },
@@ -61938,6 +61987,24 @@
                                   {
                                     "additionalProperties": true,
                                     "properties": {
+                                      "ingest": {
+                                        "additionalProperties": true,
+                                        "properties": {
+                                          "processing": {
+                                            "additionalProperties": true,
+                                            "properties": {
+                                              "updated_at": {
+                                                "not": {}
+                                              }
+                                            },
+                                            "type": "object"
+                                          }
+                                        },
+                                        "required": [
+                                          "processing"
+                                        ],
+                                        "type": "object"
+                                      },
                                       "name": {
                                         "not": {}
                                       },
@@ -62339,6 +62406,24 @@
                                   {
                                     "additionalProperties": true,
                                     "properties": {
+                                      "ingest": {
+                                        "additionalProperties": true,
+                                        "properties": {
+                                          "processing": {
+                                            "additionalProperties": true,
+                                            "properties": {
+                                              "updated_at": {
+                                                "not": {}
+                                              }
+                                            },
+                                            "type": "object"
+                                          }
+                                        },
+                                        "required": [
+                                          "processing"
+                                        ],
+                                        "type": "object"
+                                      },
                                       "name": {
                                         "not": {}
                                       },
@@ -62349,35 +62434,11 @@
                                     "type": "object"
                                   },
                                   {
-                                    "allOf": [
-                                      {
-                                        "properties": {},
-                                        "type": "object"
-                                      },
-                                      {
-                                        "properties": {
-                                          "description": {
-                                            "type": "string"
-                                          },
-                                          "name": {
-                                            "type": "string"
-                                          },
-                                          "updated_at": {
-                                            "format": "date-time",
-                                            "type": "string"
-                                          }
-                                        },
-                                        "required": [
-                                          "name",
-                                          "description",
-                                          "updated_at"
-                                        ],
-                                        "type": "object"
-                                      },
-                                      {
-                                        "properties": {
-                                          "ingest": {
-                                            "additionalProperties": false,
+                                    "additionalProperties": false,
+                                    "properties": {
+                                      "ingest": {
+                                        "allOf": [
+                                          {
                                             "properties": {
                                               "failure_store": {
                                                 "anyOf": [
@@ -66459,10 +66520,15 @@
                                                       ]
                                                     },
                                                     "type": "array"
+                                                  },
+                                                  "updated_at": {
+                                                    "format": "date-time",
+                                                    "type": "string"
                                                   }
                                                 },
                                                 "required": [
-                                                  "steps"
+                                                  "steps",
+                                                  "updated_at"
                                                 ],
                                                 "type": "object"
                                               },
@@ -66526,17 +66592,8 @@
                                               "failure_store"
                                             ],
                                             "type": "object"
-                                          }
-                                        },
-                                        "required": [
-                                          "ingest"
-                                        ],
-                                        "type": "object"
-                                      },
-                                      {
-                                        "properties": {
-                                          "ingest": {
-                                            "additionalProperties": false,
+                                          },
+                                          {
                                             "properties": {
                                               "classic": {
                                                 "additionalProperties": false,
@@ -66660,13 +66717,13 @@
                                             ],
                                             "type": "object"
                                           }
-                                        },
-                                        "required": [
-                                          "ingest"
-                                        ],
-                                        "type": "object"
+                                        ]
                                       }
-                                    ]
+                                    },
+                                    "required": [
+                                      "ingest"
+                                    ],
+                                    "type": "object"
                                   }
                                 ]
                               }
@@ -66687,6 +66744,24 @@
                                   {
                                     "additionalProperties": true,
                                     "properties": {
+                                      "ingest": {
+                                        "additionalProperties": true,
+                                        "properties": {
+                                          "processing": {
+                                            "additionalProperties": true,
+                                            "properties": {
+                                              "updated_at": {
+                                                "not": {}
+                                              }
+                                            },
+                                            "type": "object"
+                                          }
+                                        },
+                                        "required": [
+                                          "processing"
+                                        ],
+                                        "type": "object"
+                                      },
                                       "name": {
                                         "not": {}
                                       },
@@ -67088,6 +67163,24 @@
                                   {
                                     "additionalProperties": true,
                                     "properties": {
+                                      "ingest": {
+                                        "additionalProperties": true,
+                                        "properties": {
+                                          "processing": {
+                                            "additionalProperties": true,
+                                            "properties": {
+                                              "updated_at": {
+                                                "not": {}
+                                              }
+                                            },
+                                            "type": "object"
+                                          }
+                                        },
+                                        "required": [
+                                          "processing"
+                                        ],
+                                        "type": "object"
+                                      },
                                       "name": {
                                         "not": {}
                                       },
@@ -71183,10 +71276,15 @@
                                                   ]
                                                 },
                                                 "type": "array"
+                                              },
+                                              "updated_at": {
+                                                "format": "date-time",
+                                                "type": "string"
                                               }
                                             },
                                             "required": [
-                                              "steps"
+                                              "steps",
+                                              "updated_at"
                                             ],
                                             "type": "object"
                                           },
@@ -71290,6 +71388,24 @@
                               {
                                 "additionalProperties": true,
                                 "properties": {
+                                  "ingest": {
+                                    "additionalProperties": true,
+                                    "properties": {
+                                      "processing": {
+                                        "additionalProperties": true,
+                                        "properties": {
+                                          "updated_at": {
+                                            "not": {}
+                                          }
+                                        },
+                                        "type": "object"
+                                      }
+                                    },
+                                    "required": [
+                                      "processing"
+                                    ],
+                                    "type": "object"
+                                  },
                                   "name": {
                                     "not": {}
                                   },
@@ -71691,6 +71807,24 @@
                               {
                                 "additionalProperties": true,
                                 "properties": {
+                                  "ingest": {
+                                    "additionalProperties": true,
+                                    "properties": {
+                                      "processing": {
+                                        "additionalProperties": true,
+                                        "properties": {
+                                          "updated_at": {
+                                            "not": {}
+                                          }
+                                        },
+                                        "type": "object"
+                                      }
+                                    },
+                                    "required": [
+                                      "processing"
+                                    ],
+                                    "type": "object"
+                                  },
                                   "name": {
                                     "not": {}
                                   },
@@ -76388,6 +76522,9 @@
                                       ]
                                     },
                                     "type": "array"
+                                  },
+                                  "updated_at": {
+                                    "not": {}
                                   }
                                 },
                                 "required": [
@@ -80970,6 +81107,9 @@
                                       ]
                                     },
                                     "type": "array"
+                                  },
+                                  "updated_at": {
+                                    "not": {}
                                   }
                                 },
                                 "required": [
