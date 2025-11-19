@@ -141,3 +141,5 @@ export {
   featureWithFilterSchema,
   isFeatureWithFilter,
 } from './src/feature';
+
+export { type IngestStreamProcessing } from './src/models/ingest/processing';
