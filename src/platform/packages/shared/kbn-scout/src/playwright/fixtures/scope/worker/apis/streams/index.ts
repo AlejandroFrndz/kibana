@@ -8,10 +8,10 @@
  */
 
 import type { Condition, StreamlangDSL } from '@kbn/streamlang';
-import type { IngestStream } from '@kbn/streams-schema/src/models/ingest';
-import { type Ingest } from '@kbn/streams-schema/src/models/ingest';
+import type { IngestStream, IngestUpsertRequest } from '@kbn/streams-schema/src/models/ingest';
 import { WiredStream } from '@kbn/streams-schema/src/models/ingest/wired';
 import type { RoutingStatus } from '@kbn/streams-schema';
+import { omit } from 'lodash';
 import type { KbnClient, ScoutLogger } from '../../../../../../common';
 import { measurePerformanceAsync } from '../../../../../../common';
 import type { ScoutSpaceParallelFixture } from '../../scout_space';
@@ -27,7 +27,7 @@ export interface StreamsApiService {
   ) => Promise<void>;
   getStreamDefinition: (streamName: string) => Promise<IngestStream.all.GetResponse>;
   deleteStream: (streamName: string) => Promise<void>;
-  updateStream: (streamName: string, updateBody: { ingest: Ingest }) => Promise<void>;
+  updateStream: (streamName: string, updateBody: { ingest: IngestUpsertRequest }) => Promise<void>;
   clearStreamChildren: (streamName: string) => Promise<void>;
   clearStreamMappings: (streamName: string) => Promise<void>;
   clearStreamProcessors: (streamName: string) => Promise<void>;
@@ -102,7 +102,7 @@ export const getStreamsApiService = ({
         });
       });
     },
-    updateStream: async (streamName: string, updateBody: { ingest: Ingest }) => {
+    updateStream: async (streamName: string, updateBody: { ingest: IngestUpsertRequest }) => {
       await measurePerformanceAsync(log, 'streamsApi.updateStream', async () => {
         await kbnClient.request({
           method: 'PUT',
@@ -132,6 +132,7 @@ export const getStreamsApiService = ({
         await service.updateStream(streamName, {
           ingest: {
             ...definition.stream.ingest,
+            processing: omit(definition.stream.ingest.processing, 'updated_at'),
             wired: {
               ...definition.stream.ingest.wired,
               fields: {},
@@ -147,7 +148,6 @@ export const getStreamsApiService = ({
           ingest: {
             ...definition.stream.ingest,
             processing: {
-              updated_at: new Date().toISOString(),
               steps: [],
             },
           },
@@ -168,7 +168,6 @@ export const getStreamsApiService = ({
             ...definition.stream.ingest,
             processing: {
               ...processing,
-              updated_at: new Date().toISOString(),
             },
           },
         });
