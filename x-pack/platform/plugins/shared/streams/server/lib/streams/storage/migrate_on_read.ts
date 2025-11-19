@@ -140,6 +140,7 @@ export function migrateOnRead(definition: Record<string, unknown>): Streams.all.
     hasBeenMigrated = true;
   }
 
+  // Add updated_at to processing for ingest streams
   if (
     isObject(migratedDefinition.ingest) &&
     'processing' in migratedDefinition.ingest &&
