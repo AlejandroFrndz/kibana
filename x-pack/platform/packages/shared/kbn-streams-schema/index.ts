@@ -123,3 +123,5 @@ export type {
 export { emptyAssets } from './src/helpers/empty_assets';
 
 export { type Feature, featureSchema } from './src/feature';
+
+export { type IngestStreamProcessing } from './src/models/ingest/processing';
