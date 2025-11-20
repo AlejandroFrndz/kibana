@@ -249,6 +249,14 @@ export const streamEnrichmentMachine = setup({
         dataSourceRef.send({ type: 'dataSource.refresh' })
       );
     },
+    sendStreamProcessingUpdatedAtToDataSources: ({ context }) => {
+      context.dataSourcesRefs.forEach((dataSourceRef) =>
+        dataSourceRef.send({
+          type: 'dataSource.setStreamProcessingUpdatedAt',
+          streamProcessingUpdatedAt: context.definition.stream.ingest.processing.updated_at,
+        })
+      );
+    },
     /* @ts-expect-error The error is thrown because the type of the event is not inferred correctly when using enqueueActions during setup */
     sendStepsEventToSimulator: enqueueActions(
       ({ context, enqueue }, params?: { type: StreamEnrichmentEvent['type'] }) => {
@@ -274,14 +282,6 @@ export const streamEnrichmentMachine = setup({
       samples: getActiveDataSourceSamples(context),
     })),
     sendResetEventToSimulator: sendTo('simulator', { type: 'simulation.reset' }),
-    sendStreamProcessingUpdatedAtToDataSources: ({ context }) => {
-      context.dataSourcesRefs.forEach((dataSourceRef) =>
-        dataSourceRef.send({
-          type: 'dataSource.setStreamProcessingUpdatedAt',
-          streamProcessingUpdatedAt: context.definition.stream.ingest.processing.updated_at,
-        })
-      );
-    },
   },
   guards: {
     hasStagedChanges: ({ context }) => {
