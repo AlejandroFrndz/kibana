@@ -57918,6 +57918,7 @@ paths:
                                             - lifecycle
                                             - processing
                                             - settings
+                                            - failure_store
                                         - type: object
                                           properties:
                                             wired:
@@ -62936,6 +62937,7 @@ paths:
                                             - lifecycle
                                             - processing
                                             - settings
+                                            - failure_store
                                         - type: object
                                           properties:
                                             classic:
