@@ -18,6 +18,7 @@ import {
   ERROR_GROUP_ID,
   ERROR_GROUP_NAME,
   ERROR_LOG_MESSAGE,
+  ERROR_MESSAGE,
   SERVICE_NAME,
   TRACE_ID,
   TRANSACTION_NAME,
@@ -105,6 +106,7 @@ export async function getErrorGroupMainStatistics({
     ERROR_EXC_MESSAGE,
     ERROR_EXC_HANDLED,
     ERROR_EXC_TYPE,
+    ERROR_MESSAGE,
   ] as const);
 
   const response = await apmEventClient.search('get_error_group_main_statistics', {
