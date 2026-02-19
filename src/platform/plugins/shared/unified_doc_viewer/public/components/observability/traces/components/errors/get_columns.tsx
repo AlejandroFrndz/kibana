@@ -22,6 +22,7 @@ import {
   ERROR_ID,
   EXCEPTION_MESSAGE,
 } from '@kbn/apm-types';
+import { getErrorMessageFieldWithFallbacks } from '@kbn/discover-utils';
 import { useDataSourcesContext } from '../../../../../hooks/use_data_sources';
 import { NOT_AVAILABLE_LABEL } from '../../common/constants';
 import { DiscoverEsqlLink } from '../discover_esql_link';
@@ -96,15 +97,9 @@ const ErrorMessageLinkCell = ({
 };
 
 const getErrorMessage = (error: ErrorData) => {
-  if (error?.exception?.message) {
-    return error.exception.message;
-  }
+  const { value: errorMessage } = getErrorMessageFieldWithFallbacks({ ...error });
 
-  if (error?.log?.message) {
-    return error.log.message;
-  }
-
-  return NOT_AVAILABLE_LABEL;
+  return errorMessage || NOT_AVAILABLE_LABEL;
 };
 
 export const getColumns = ({

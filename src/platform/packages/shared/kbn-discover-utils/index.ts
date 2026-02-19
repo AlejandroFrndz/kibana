@@ -71,6 +71,7 @@ export {
   getEsQuerySort,
   getTieBreakerFieldName,
   severityOrder,
+  getErrorMessageFieldWithFallbacks,
 } from './src';
 
 export type { LogsContextService, ApmContextService, SortOrder, SortInput, SortPair } from './src';

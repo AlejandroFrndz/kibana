@@ -28,5 +28,6 @@ export * from './get_field_value';
 export * from './get_visible_columns';
 export * from './convert_value_to_string';
 export * from './sorting';
+export * from './get_error_message_field_with_fallbacks';
 export { DiscoverFlyouts, dismissAllFlyoutsExceptFor, dismissFlyouts } from './dismiss_flyouts';
 export { prepareDataViewForEditing } from './prepare_data_view_for_editing';
