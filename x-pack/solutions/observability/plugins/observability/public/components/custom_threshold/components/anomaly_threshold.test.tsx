@@ -5,7 +5,6 @@
  * 2.0.
  */
 
-import { LIGHT_THEME } from '@elastic/charts';
 import React from 'react';
 import { render } from '@testing-library/react';
 import type { AnomalyThresholdProps } from './anomaly_threshold';
@@ -13,18 +12,13 @@ import { AnomalyThreshold } from './anomaly_threshold';
 
 describe('AnomalyThreshold', () => {
   const defaultProps: AnomalyThresholdProps = {
-    chartProps: { baseTheme: LIGHT_THEME },
     id: 'test-anomaly',
     severity: 'Critical',
     severityThreshold: 'Alert when critical or above',
   };
 
   const renderComponent = (props: Partial<AnomalyThresholdProps> = {}) => {
-    return render(
-      <div style={{ height: '160px', width: '240px' }}>
-        <AnomalyThreshold {...defaultProps} {...props} />
-      </div>
-    );
+    return render(<AnomalyThreshold {...defaultProps} {...props} />);
   };
 
   it('renders the component', () => {

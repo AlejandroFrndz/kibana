@@ -88,7 +88,6 @@ export function AlertDetailsAppSection({
 
       return (
         <AnomalyThreshold
-          chartProps={chartThemes}
           id={`${chartLayout.primary}-anomaly-threshold`}
           severity={formatSeverityLabel(alertSeverity)}
           severityThreshold={formatAnomalySeverityThreshold(alertEvaluationThreshold)}
@@ -183,6 +182,7 @@ export function AlertDetailsAppSection({
 
   return (
     <EuiFlexGroup direction="column" gutterSize="s">
+      {thresholdComponent}
       <TimeRangeMetadataContextProvider
         start={from}
         end={to}

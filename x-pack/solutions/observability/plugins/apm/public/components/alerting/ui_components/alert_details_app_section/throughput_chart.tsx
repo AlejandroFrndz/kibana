@@ -10,7 +10,14 @@ import React from 'react';
 import type { Theme } from '@elastic/charts';
 import type { BoolQuery } from '@kbn/es-query';
 import type { RecursivePartial } from '@elastic/eui';
-import { EuiFlexItem, EuiPanel, EuiFlexGroup, EuiTitle, EuiIconTip } from '@elastic/eui';
+import {
+  EuiFlexItem,
+  EuiPanel,
+  EuiFlexGroup,
+  EuiTitle,
+  EuiIconTip,
+  EuiProgress,
+} from '@elastic/eui';
 import { i18n } from '@kbn/i18n';
 import type { TopAlert } from '@kbn/observability-plugin/public';
 import { useKibana } from '@kbn/kibana-react-plugin/public';
@@ -167,7 +174,8 @@ export function ThroughputChart({
 
   return (
     <EuiFlexItem>
-      <EuiPanel hasBorder={true}>
+      <EuiPanel hasBorder={true} style={{ position: 'relative' }}>
+        <EuiProgress size="s" max={100} value={100} color="danger" position="absolute" />
         <EuiFlexGroup alignItems="center" gutterSize="s" responsive={false}>
           <EuiFlexItem grow={false}>
             <EuiTitle size="xs">
